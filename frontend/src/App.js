@@ -40,78 +40,83 @@ function App() {
   }, []); // Empty dependency array ensures it only runs once after the component mounts.
 
   return (
-    <AuthProvider>
-      <CartProvider>
-        <Router>
-          <div className="app-main-container">
-            <Navbar />
-            <div className="app-content-area">
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/register" element={<PublicRoute><Register /></PublicRoute>} />
-                <Route path="/login" element={<PublicRoute><Login /></PublicRoute>} />
-                <Route path="/products" element={<PublicRoute><Product /></PublicRoute>} />
+    <Router>
+      <Routes>
+        <Route path="/" element={<AdminDashboard />} />
+      </Routes>
+    </Router>
+    // <AuthProvider>
+    //   <CartProvider>
+    //     <Router>
+    //       <div className="app-main-container">
+    //         <Navbar />
+    //         <div className="app-content-area">
+    //           <Routes>
+    //             <Route path="/" element={<Home />} />
+    //             <Route path="/register" element={<PublicRoute><Register /></PublicRoute>} />
+    //             <Route path="/login" element={<PublicRoute><Login /></PublicRoute>} />
+    //             <Route path="/products" element={<PublicRoute><Product /></PublicRoute>} />
                 
               
-                <Route
-                  path="/admin-dashboard"
-                  element={<Navigate to="/admin" replace />}
-                />
-                <Route
-                  path="/admin-dashboard-users"
-                  element={
-                    <PrivateRoute requiredRole="admin">
-                      <AdminUser />
-                    </PrivateRoute>
-                  }
-                />
-                <Route path="/admin" element={<AdminDashboard />} />
-                <Route
-                  path="/admin-dashboard-inventory"
-                  element={
-                    <PrivateRoute requiredRole="admin">
-                      <Inventory />
-                    </PrivateRoute>
-                  }
-                />
-                <Route
-                  path="/admin-dashboard-sales"
-                  element={
-                    <PrivateRoute requiredRole="admin">
-                      <SalesManagement />
-                    </PrivateRoute>
-                  }
-                />
-                <Route
-                  path="/staff-dashboard"
-                  element={
-                    <PrivateRoute requiredRole="staff">
-                      <StaffDashboard />
-                    </PrivateRoute>
-                  }
-                />
+    //             <Route
+    //               path="/admin-dashboard"
+    //               element={<Navigate to="/admin" replace />}
+    //             />
+    //             <Route
+    //               path="/admin-dashboard-users"
+    //               element={
+    //                 <PrivateRoute requiredRole="admin">
+    //                   <AdminUser />
+    //                 </PrivateRoute>
+    //               }
+    //             />
+    //             <Route path="/admin" element={<AdminDashboard />} />
+    //             <Route
+    //               path="/admin-dashboard-inventory"
+    //               element={
+    //                 <PrivateRoute requiredRole="admin">
+    //                   <Inventory />
+    //                 </PrivateRoute>
+    //               }
+    //             />
+    //             <Route
+    //               path="/admin-dashboard-sales"
+    //               element={
+    //                 <PrivateRoute requiredRole="admin">
+    //                   <SalesManagement />
+    //                 </PrivateRoute>
+    //               }
+    //             />
+    //             <Route
+    //               path="/staff-dashboard"
+    //               element={
+    //                 <PrivateRoute requiredRole="staff">
+    //                   <StaffDashboard />
+    //                 </PrivateRoute>
+    //               }
+    //             />
 
-                {/* NEW: Sales route for logged-in users */}
-                <Route
-                  path="/sales"
-                  element={
-                    <PrivateRoute>
-                      <SalesManagement products={products} />
-                    </PrivateRoute>
-                  }
-                />
-                <Route path="/cart" element={<PrivateRoute><CartPage /></PrivateRoute>} />
+    //             {/* NEW: Sales route for logged-in users */}
+    //             <Route
+    //               path="/sales"
+    //               element={
+    //                 <PrivateRoute>
+    //                   <SalesManagement products={products} />
+    //                 </PrivateRoute>
+    //               }
+    //             />
+    //             <Route path="/cart" element={<PrivateRoute><CartPage /></PrivateRoute>} />
                 
-                {/* Add the /supplier route here */}
-                <Route path="/supplier" element={<Supplier />} /> {/* Supplier route */}
-                <Route path="/admin-dashboard-supplier" element={<Supplier />} />
-                <Route path="/admin-dashboard-customer" element={<Customer />} />
-              </Routes>
-            </div>
-          </div>
-        </Router>
-      </CartProvider>
-    </AuthProvider>
+    //             {/* Add the /supplier route here */}
+    //             <Route path="/supplier" element={<Supplier />} /> {/* Supplier route */}
+    //             <Route path="/admin-dashboard-supplier" element={<Supplier />} />
+    //             <Route path="/admin-dashboard-customer" element={<Customer />} />
+    //           </Routes>
+    //         </div>
+    //       </div>
+    //     </Router>
+    //   </CartProvider>
+    // </AuthProvider>
   );
 }
 
