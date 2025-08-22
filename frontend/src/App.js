@@ -55,11 +55,7 @@ function App() {
               
                 <Route
                   path="/admin-dashboard"
-                  element={
-                    <PrivateRoute requiredRole="admin">
-                      <AdminDashboard />
-                    </PrivateRoute>
-                  }
+                  element={<Navigate to="/admin" replace />}
                 />
                 <Route
                   path="/admin-dashboard-users"
@@ -69,6 +65,7 @@ function App() {
                     </PrivateRoute>
                   }
                 />
+                <Route path="/admin" element={<AdminDashboard />} />
                 <Route
                   path="/admin-dashboard-inventory"
                   element={
